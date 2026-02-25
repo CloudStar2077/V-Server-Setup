@@ -31,7 +31,7 @@ After logging into the server, I first get an overview of the environment:
 
 `id` → displays group memberships
 
-<img width="1058" height="225" alt="2026-02-19_17-19" src="https://github.com/user-attachments/assets/acb699ba-cbc1-46f8-8dfe-c7698f7cbffa" />
+<img width="1058" height="225" alt="2026-02-19_17-19" src="https://github.com/user-attachments/assets/188a78e0-eab5-45b2-a4f7-2d5ff88d7d86" />
 
 This allows me to verify that I am part of the sudo group, which enables the execution of commands with elevated privileges.
 
@@ -54,7 +54,7 @@ The public key is copied to the target host using:
 
 The `-i` option specifies the identity file (our public key).
 
-<img width="1059" height="385" alt="xyz" src="https://github.com/user-attachments/assets/108f49d5-9931-4a0a-8d8a-8f5496cef497" />   
+<img width="1059" height="385" alt="2026-02-19_19-00" src="https://github.com/user-attachments/assets/1d471839-39ef-4a99-83b3-d2065256cf1c" />
 
 ## 3. Disable Password Authentication
 
@@ -63,7 +63,7 @@ You can open the text editor with "vim".
 
 `vim /etc/ssh/sshd_config`
 
-<img width="815" height="68" alt="2026-02-19_21-46" src="https://github.com/user-attachments/assets/c0eedefa-9c41-490b-a745-2c9a5fd59ef3" />
+<img width="815" height="68" alt="2026-02-19_21-46" src="https://github.com/user-attachments/assets/6d039ecf-5851-4078-9263-656341eadeb7" />
 
 ## 4. Installation and configuration Nginx webserver
 
@@ -78,7 +78,7 @@ After installation, the service status is checked:
 
 `systemctl status nginx.service`
 
-<img width="1256" height="431" alt="2026-02-19_22-39" src="https://github.com/user-attachments/assets/768b5828-639e-465e-ac0d-b88f64470071" />
+<img width="1256" height="431" alt="2026-02-19_22-39" src="https://github.com/user-attachments/assets/4d275c6b-0a2d-4a29-a0e1-5804b825eab0" />
 
 If the preset shows enabled, this indicates that the service will automatically start after a reboot.
 
@@ -98,13 +98,13 @@ To configure the web server to load the newly defined alternative website, the f
 
 `sudo vim /etc/nginx/sites-enabled/alternatives`
 
-<img width="667" height="295" alt="2026-02-23_19-36" src="https://github.com/user-attachments/assets/7abbadf3-374c-4600-9eca-1da9953d0b06" /> <br>
+<img width="702" height="300" alt="2026-02-20_10-37" src="https://github.com/user-attachments/assets/ef1450e7-449e-4540-b7a6-8172a1810030" /> <br>
 
 Of course, the alternate-index.html file also needs to be filled with HTML code. 
 
 `sudo vim /var/www/alternatives/alternate-index.html`
 
-<img width="999" height="397" alt="2026-02-23_19-43" src="https://github.com/user-attachments/assets/666f2dcd-0c98-4a02-bad5-c73d307f86ac" /> <br>
+<img width="948" height="374" alt="2026-02-20_11-54" src="https://github.com/user-attachments/assets/ad91ce6c-c515-4c63-a470-dbd3aca5accb" /> <br>
 
 To ensure that the default nginx website is no longer displayed and users are directed to the alternative website, port 80 is disabled and a redirect to port 8081 is set up.
 
@@ -112,23 +112,22 @@ Comment out the following entry (listen):
 
 `sudo vi /etc/nginx/sites-available/default`
 
-<img width="676" height="153" alt="2026-02-24_18-10" src="https://github.com/user-attachments/assets/58234a56-d112-4aae-b224-f9099a751948" /> <br>
+<img width="676" height="153" alt="2026-02-24_18-10" src="https://github.com/user-attachments/assets/e27368a7-0813-47b9-aebc-68b7d765c511" /> <br>
 
 Create a new file and add the following server block 
 
 `sudo vim /etc/nginx/sites-available/redirect_80.conf`
 
-<img width="682" height="160" alt="2026-02-24_18-39" src="https://github.com/user-attachments/assets/d4d6b14e-927f-465a-8b45-bf1a73e43178" /> <br>
+<img width="682" height="160" alt="2026-02-24_18-39" src="https://github.com/user-attachments/assets/c4c52906-7284-4db8-84fd-318111f1ecfc" /> <br>
 
-
-Configure and test nginx
+Configure and test nginx                    
 
 `sudo nginx -t`       
 `sudo systemctl restart nginx`
 
 To verify, open a web browser and access the target IP address, in this case 167.235.27.211
 
-<img width="689" height="166" alt="2026-02-24_18-54" src="https://github.com/user-attachments/assets/57863877-e987-4c64-ba1e-8d0349fea39e" /> <br>
+<img width="689" height="166" alt="2026-02-24_18-54" src="https://github.com/user-attachments/assets/dc8bbcfc-0ecc-4c82-888c-2dc7ff3f7153" /> <br>
 
 ## 5. Git Installation and Login
 
@@ -138,7 +137,7 @@ To install Git, use the command:
 
 The installation is then verified with `git --version`. The output should display the Git version.
 
-<img width="456" height="58" alt="2026-02-23_18-59" src="https://github.com/user-attachments/assets/93eded8a-477b-49ce-a435-3a2c223b37d5" /> <br>
+<img width="456" height="58" alt="2026-02-23_18-59" src="https://github.com/user-attachments/assets/202b1177-7987-4179-b58b-308cbded5e1b" /> <br>
 
 Now, the credentials need to be entered using the following commands:
 
@@ -173,12 +172,15 @@ Test if it works
 
 `ssh -T git@github.com`
 
+<img width="1261" height="77" alt="2026-02-25_17-37" src="https://github.com/user-attachments/assets/85c08a35-1976-4b15-a270-9c90b22e123d" /> <br>
+
 Now its time to make a readme.md on the local machine and add it to the github remote host 
 
-`touch README.md`
+`touch README.md` 
 `git add README.md`
 `git remote add origin git@github.com:"username"/"repo"`
 `git push -u origin main`
+
 
 ### THE END 
 
