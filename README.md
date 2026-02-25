@@ -174,15 +174,13 @@ Test if it works
 
 <img width="1261" height="77" alt="2026-02-25_17-37" src="https://github.com/user-attachments/assets/85c08a35-1976-4b15-a270-9c90b22e123d" /> <br>
 
-Now its time to make a readme.md on the local machine and add it to the github remote host 
+Finally its time to push the local repo to the github remote host 
 
 `touch README.md` 
 
 `git add README.md`
 
 `git remote add origin git@github.com:"username"/"repo"`
-
-Finally the branch needs to get pushed to github
 
 `git push -u origin main`
 
