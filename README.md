@@ -177,8 +177,13 @@ Test if it works
 Now its time to make a readme.md on the local machine and add it to the github remote host 
 
 `touch README.md` 
+
 `git add README.md`
+
 `git remote add origin git@github.com:"username"/"repo"`
+
+Finally the branch needs to get pushed to github
+
 `git push -u origin main`
 
 
