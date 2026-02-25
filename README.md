@@ -150,7 +150,16 @@ To check the configuration:
 
 `git config --list`
 
-Finally, a key pair is also created on the virtual server.
+Then Create a new local Branch in the home directory
+
+`mkdir -p ~/Git/V-Server-Setup`
+
+After that the repository needs to be initialize
+
+`cd ~/Git/V-Server-Setup`
+`git init`
+
+A key pair is also created on the virtual server.
 
 `ssh-keygen -t ed25519`
 
@@ -164,10 +173,12 @@ Test if it works
 
 `ssh -T git@github.com`
 
-Now its time to clone the project repository from github
+Now its time to make a readme.md on the local machine and add it to the github remote host 
 
-`git clone git@github.com:CloudStar2077/V-Server-Setup.git`
-
+`touch README.md`
+`git add README.md`
+`git remote add origin git@github.com:"username"/"repo"`
+`git push -u origin main`
 
 ### THE END 
 
