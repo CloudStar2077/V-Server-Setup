@@ -1,5 +1,5 @@
 # V-Server-Setup
-A Nginx webserver and Git should be installed on the machine. To harden the server, asymmetric encryption using a SSH key pair will be configured, and password-based login will be disabled.
+An Nginx webserver and Git should be installed on the machine. To harden the server, asymmetric encryption using a SSH key pair will be configured, and password-based login will be disabled.
 
 
 # Table of Contents
@@ -131,6 +131,16 @@ To verify, open a web browser and access the target IP address, in this case 167
 
 ## 5. Git Installation and Login
 
+A key pair is also created on the virtual server.
+
+`ssh-keygen -t ed25519`
+
+Copy the public key.
+
+`cat ~/.ssh/github-key.pub`
+
+Then add it to the GitHub web interface under SSH and GPG Keys settings.
+
 To install Git, use the command:
 
 `sudo apt install git -y` .
@@ -158,16 +168,6 @@ After that the repository needs to be initialize
 `cd ~/Git/V-Server-Setup`
 `git init`
 
-A key pair is also created on the virtual server.
-
-`ssh-keygen -t ed25519`
-
-Copy the public key.
-
-`cat ~/.ssh/github-key.pub`
-
-Then add it to the GitHub web interface under SSH and GPG Keys settings.
-
 Test if it works 
 
 `ssh -T git@github.com`
@@ -184,6 +184,11 @@ Finally its time to push the local repo to the github remote host
 
 `git push -u origin main`
 
+In order to execute pull requests, a feature branch is created.
+
+`git checkout -b feature/update-readme`
+
+`git push -u origin feature/update-readme`
 
 ### THE END 
 
