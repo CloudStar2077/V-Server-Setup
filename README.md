@@ -98,13 +98,14 @@ To configure the web server to load the newly defined alternative website, the f
 
 `sudo vim /etc/nginx/sites-enabled/alternatives`
 
-<img width="702" height="300" alt="2026-02-20_10-37" src="https://github.com/user-attachments/assets/ef1450e7-449e-4540-b7a6-8172a1810030" /> <br>
+<img width="611" height="293" alt="2026-02-26_14-30" src="https://github.com/user-attachments/assets/16ea08b1-427d-4e0b-aad7-96d7ea08d5a7" /> <br>
 
 Of course, the alternate-index.html file also needs to be filled with HTML code. 
 
 `sudo vim /var/www/alternatives/alternate-index.html`
 
-<img width="948" height="374" alt="2026-02-20_11-54" src="https://github.com/user-attachments/assets/ad91ce6c-c515-4c63-a470-dbd3aca5accb" /> <br>
+<img width="976" height="378" alt="2026-02-26_14-31" src="https://github.com/user-attachments/assets/ce166273-f045-4780-af09-dd6f7b5c2875" /> <br>
+
 
 To ensure that the default nginx website is no longer displayed and users are directed to the alternative website, port 80 is disabled and a redirect to port 8081 is set up.
 
