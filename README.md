@@ -142,9 +142,7 @@ Copy the public key.
 
 Then add it to the GitHub web interface under SSH and GPG Keys settings.
 
-To install Git, use the command:
-
-`sudo apt install git -y` .
+To install Git, use the command `sudo apt install git -y` .
 
 The installation is then verified with `git --version`. The output should display the Git version.
 
