@@ -178,10 +178,11 @@ Finally its time to push the local repo to the github remote host
 `touch README.md` 
 
 `git add README.md`
+```console
+ssh -T git@github.com
+@@ -184,6 +185,11 @@ Finally its time to push the local repo to the github remote host
 
-`git remote add origin git@github.com:"username"/"repo"`
-
-`git push -u origin main`
+git push -u origin main
 
 In order to execute pull requests, a feature branch is created.
 
