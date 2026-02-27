@@ -134,8 +134,7 @@ sudo systemctl restart nginx
 ```
 To verify, open a web browser and access the target IP address
 
-<img width="478" height="181" alt="2026-02-27_20-42" src="https://github.com/user-attachments/assets/468338cc-d5a5-4d28-973b-868dbd87c4ff" /> <br>
-
+<img width="583" height="142" alt="2026-02-27_21-21" src="https://github.com/user-attachments/assets/1d005e9f-dda5-4b90-9edd-d60f6d533032" /> <br>
 
 ## 5. Git Installation and Login
 
