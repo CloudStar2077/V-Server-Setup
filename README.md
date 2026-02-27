@@ -15,7 +15,7 @@ An Nginx webserver and Git should be installed on the machine. To harden the ser
 
 To begin setting up the virtual machine, a SSH connection is established to the target host. For this, the server IP address and user credentials are required.
 
-`ssh vladimir-ivic@167.235.27.211`
+`ssh "username"@"target-ip"`
 
 Since this is the first connection and the server’s public key is not yet stored in the local known_hosts file, the following message appears:
   
@@ -31,11 +31,7 @@ After logging into the server, I first get an overview of the environment:
 
 `id` → displays group memberships
 
-<img width="1046" height="205" alt="2026-02-27_10-28" src="https://github.com/user-attachments/assets/63fe0263-c91b-45e3-9b21-cbbefb014068" />
-
 This allows me to verify that I am part of the sudo group, which enables the execution of commands with elevated privileges.
-
-The `hostname` command displays the machine name.
 
 ## 2. Creating and Deploying the SSH Key Pair
 
@@ -50,11 +46,9 @@ For this project, no passphrase is set.
 In the hidden directory ~/.ssh, both the private and public keys are now stored.
 The public key is copied to the target host using:
 
-`ssh-copy-id -i /home/user/.ssh/demo_ed25519.pub vladimir-ivic@167.235.27.211`
+`ssh-copy-id -i /home/user/.ssh/demo_ed25519.pub "username"@target-ip`
 
 The `-i` option specifies the identity file (our public key).
-
-<img width="1059" height="385" alt="2026-02-19_19-00" src="https://github.com/user-attachments/assets/1d471839-39ef-4a99-83b3-d2065256cf1c" />
 
 ## 3. Disable Password Authentication
 
@@ -62,8 +56,6 @@ In the file /etc/ssh/sshd_config, we edit the line PasswordAuthentication from y
 You can open the text editor with "vim".
 
 `vim /etc/ssh/sshd_config`
-
-<img width="815" height="68" alt="2026-02-19_21-46" src="https://github.com/user-attachments/assets/6d039ecf-5851-4078-9263-656341eadeb7" />
 
 ## 4. Installation and configuration Nginx webserver
 
@@ -111,24 +103,39 @@ To ensure that the default nginx website is no longer displayed and users are di
 
 Comment out the following entry (listen):
 
-`sudo vi /etc/nginx/sites-available/default`
+`sudo vim /etc/nginx/sites-available/default`
 
-<img width="676" height="153" alt="2026-02-24_18-10" src="https://github.com/user-attachments/assets/e27368a7-0813-47b9-aebc-68b7d765c511" /> <br>
+```
+# Default server configuration
+#
+server {
+       #        listen 80 default_server;
+       #        listen [::]:80 default_server;
+
+  ```
 
 Create a new file and add the following server block 
 
 `sudo vim /etc/nginx/sites-available/redirect_80.conf`
 
-<img width="682" height="160" alt="2026-02-24_18-39" src="https://github.com/user-attachments/assets/c4c52906-7284-4db8-84fd-318111f1ecfc" /> <br>
+```
+Server {
+    listen 80;
+    server_name "ip-address";
+
+    return 301 http://$host:8081$request_uri;
+}
+  ```
 
 Configure and test nginx                    
 ```
 sudo nginx -t       
 sudo systemctl restart nginx
 ```
-To verify, open a web browser and access the target IP address, in this case 167.235.27.211
+To verify, open a web browser and access the target IP address
 
-<img width="689" height="166" alt="2026-02-24_18-54" src="https://github.com/user-attachments/assets/dc8bbcfc-0ecc-4c82-888c-2dc7ff3f7153" /> <br>
+<img width="478" height="181" alt="2026-02-27_20-42" src="https://github.com/user-attachments/assets/468338cc-d5a5-4d28-973b-868dbd87c4ff" /> <br>
+
 
 ## 5. Git Installation and Login
 
