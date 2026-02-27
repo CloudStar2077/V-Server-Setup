@@ -191,7 +191,7 @@ In order to execute pull requests, a feature branch is created.
 git checkout -b feature/update-readme
 
 git push -u origin feature/update-readme
-### THE END 
+ 
 
 
    
