@@ -31,7 +31,7 @@ After logging into the server, I first get an overview of the environment:
 
 `id` → displays group memberships
 
-<img width="1058" height="225" alt="2026-02-19_17-19" src="https://github.com/user-attachments/assets/188a78e0-eab5-45b2-a4f7-2d5ff88d7d86" />
+<img width="1046" height="205" alt="2026-02-27_10-28" src="https://github.com/user-attachments/assets/63fe0263-c91b-45e3-9b21-cbbefb014068" />
 
 This allows me to verify that I am part of the sudo group, which enables the execution of commands with elevated privileges.
 
@@ -122,10 +122,10 @@ Create a new file and add the following server block
 <img width="682" height="160" alt="2026-02-24_18-39" src="https://github.com/user-attachments/assets/c4c52906-7284-4db8-84fd-318111f1ecfc" /> <br>
 
 Configure and test nginx                    
-
-`sudo nginx -t`       
-`sudo systemctl restart nginx`
-
+```
+sudo nginx -t       
+sudo systemctl restart nginx
+```
 To verify, open a web browser and access the target IP address, in this case 167.235.27.211
 
 <img width="689" height="166" alt="2026-02-24_18-54" src="https://github.com/user-attachments/assets/dc8bbcfc-0ecc-4c82-888c-2dc7ff3f7153" /> <br>
@@ -149,11 +149,11 @@ The installation is then verified with `git --version`. The output should displa
 <img width="456" height="58" alt="2026-02-23_18-59" src="https://github.com/user-attachments/assets/202b1177-7987-4179-b58b-308cbded5e1b" /> <br>
 
 Now, the credentials need to be entered using the following commands:
+```
+git config --global user.name "Your Name"
 
-`git config --global user.name "Your Name"`
-
-`git config --global user.email "your.email@example.com"`
-
+git config --global user.email "your.email@example.com"
+  ```
 To check the configuration:
 
 `git config --list`
@@ -175,23 +175,19 @@ Test if it works
 
 Finally its time to push the local repo to the github remote host 
 
-`touch README.md` 
-
-`git add README.md`
 ```console
-ssh -T git@github.com
-@@ -184,6 +185,11 @@ Finally its time to push the local repo to the github remote host
+touch README.md 
+
+git add README.md
 
 git push -u origin main
 
-In order to execute pull requests, a feature branch is created.
+#In order to execute pull requests, a feature branch is created.
 
-
-```console
 git checkout -b feature/update-readme
 
 git push -u origin feature/update-readme
- 
+  ```
 
 
    
