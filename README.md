@@ -38,9 +38,9 @@ This allows you to verify if you are part of the sudo group, which enables the e
 
 Generate the SSH Key pair on the local machine:
 
--`logout` --> logout from V-Server
+- `logout` --> logout from V-Server
 
--`ssh-keygen -t ed25519` --> generates a SSH Key Pair
+- `ssh-keygen -t ed25519` --> generates a SSH Key Pair
    
 This sets the encryption type to ed25519, which is currently one of the most modern and secure algorithms.
 For this project, no passphrase is set.
