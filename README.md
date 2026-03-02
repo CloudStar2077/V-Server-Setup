@@ -1,6 +1,6 @@
 # V-Server-Setup
-An Nginx webserver and Git should be installed on the machine. To harden the server, asymmetric encryption using a SSH key pair will be configured, and password-based login will be disabled.
 
+An Nginx web server and Git will be deployed on the target system. To enhance security, asymmetric encryption will be implemented through SSH key-based authentication, and password-based authentication will be permanently disabled.
 
 # Table of Contents
 
@@ -15,40 +15,41 @@ An Nginx webserver and Git should be installed on the machine. To harden the ser
 
 To begin setting up the virtual machine, a SSH connection is established to the target host. For this, the server IP address and user credentials are required.
 
-`ssh "username"@"target-ip"`
-
-Since this is the first connection and the server’s public key is not yet stored in the local known_hosts file, the following message appears:
-  
+```bash 
+ssh "username"@"target-ip"`
+```
+If this is the first connection, the server’s public key is not yet stored in the local `known_hosts` file, the following message appears:
+```bash
   The authenticity of host '... (IP address)' can't be established.
   ECDSA key fingerprint is SHA256:....
   Are you sure you want to continue connecting (yes/no/[fingerprint])?
-
+  ```
 This must be confirmed by typing: `yes`
 
-After logging into the server, I first get an overview of the environment:
+After logging into the server, you can get an overview of the environment by typing:
 
-`whoami` → shows the current user
+-`whoami` → shows the current user
 
-`id` → displays group memberships
+-`id` → displays group memberships
 
-This allows me to verify that I am part of the sudo group, which enables the execution of commands with elevated privileges.
+This allows you to verify if you are part of the sudo group, which enables the execution of commands with elevated privileges.
 
 ## 2. Creating and Deploying the SSH Key Pair
 
-Next, the key pair must be generated on the local machine:
+Generate the SSH Key pair on the local machine:
 
-`logout`
+-`logout` --> logout from V-Server
 
-`ssh-keygen -t ed25519`
+-`ssh-keygen -t ed25519` --> generates a SSH Key Pair
    
 This sets the encryption type to ed25519, which is currently one of the most modern and secure algorithms.
 For this project, no passphrase is set.
-In the hidden directory ~/.ssh, both the private and public keys are now stored.
-The public key is copied to the target host using:
-
+In the hidden directory `~/.ssh`, both the private and public keys are now stored.
+Copy the public key to the target host using:
+```bash
 `ssh-copy-id -i /home/user/.ssh/demo_ed25519.pub "username"@target-ip`
-
-The `-i` option specifies the identity file (our public key).
+ ```
+The `-i` option specifies the identity file (public key).
 
 ## 3. Disable Password Authentication
 
