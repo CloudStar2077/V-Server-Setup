@@ -28,9 +28,9 @@ This must be confirmed by typing: `yes`
 
 After logging into the server, you can get an overview of the environment by typing:
 
--`whoami` → shows the current user
+- `whoami` → shows the current user
 
--`id` → displays group memberships
+- `id` → displays group memberships
 
 This allows you to verify if you are part of the sudo group, which enables the execution of commands with elevated privileges.
 
