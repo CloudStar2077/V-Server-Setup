@@ -173,7 +173,7 @@ git config --list
  ```
 Then Create a new local Branch in the home directory
 ```bash
-`mkdir -p ~/Git/V-Server-Setup`
+mkdir -p ~/Git/V-Server-Setup
  ```
 Initialize the repository
 ```bash
